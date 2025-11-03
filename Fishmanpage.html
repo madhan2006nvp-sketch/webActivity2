@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>மீனவர் பக்கம் - Fisherman Portal</title>
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .container {
+      max-width: 700px;
+      background: white;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0072ff;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00c6ff;
+      box-shadow: 0 0 6px rgba(0,198,255,0.3);
+    }
+
+    button {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #0072ff;
+      color: white;
+    }
+
+    img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 22px; }
+      .container { padding: 15px; }
+      input, textarea { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>மீனவர் பக்கம் 🐠 | Fisherman Portal</h1>
+    <p>உங்கள் மீன்களைச் சேர்த்து இன்றைய சந்தையைப் புதுப்பிக்கவும்</p>
+  </header>
+
+  <div class="container">
+    <h2>மீன் விவரங்களைச் சேர்க்கவும்</h2>
+
+    <form id="fishForm">
+      <input type="text" id="fishName" placeholder="மீன் பெயர் / Fish Name" required>
+      <input type="number" id="price" placeholder="விலை (₹/Kg)" required>
+      <input type="number" id="quantity" placeholder="கிடைக்கும் அளவு (Kg)" required>
+      <input type="file" id="image" accept="image/*" required>
+      <textarea id="description" placeholder="விளக்கம் (Description)" rows="3" required></textarea>
+      <button type="submit">மீன் சேர்க்கவும் 🐟</button>
+    </form>
+
+    <h2 style="margin-top: 30px;">சேர்க்கப்பட்ட மீன்கள்</h2>
+
+    <table id="fishTable">
+      <thead>
+        <tr>
+          <th>படம்</th>
+          <th>மீன் பெயர்</th>
+          <th>விலை</th>
+          <th>அளவு</th>
+          <th>விளக்கம்</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Added fish will appear here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const fishForm = document.getElementById('fishForm');
+    const fishTable = document.querySelector('#fishTable tbody');
+
+    fishForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('fishName').value;
+      const price = document.getElementById('price').value;
+      const qty = document.getElementById('quantity').value;
+      const desc = document.getElementById('description').value;
+      const imageFile = document.getElementById('image').files[0];
+
+      if (!imageFile) {
+        alert("Please upload an image!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td><img src="${event.target.result}" alt="Fish"></td>
+          <td>${name}</td>
+          <td>₹${price}</td>
+          <td>${qty} Kg</td>
+          <td>${desc}</td>
+        `;
+        fishTable.appendChild(newRow);
+        fishForm.reset();
+      };
+      reader.readAsDataURL(imageFile);
+    });
+  </script>
+
+</body>
+</html>

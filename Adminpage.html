@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>நிர்வாகி பக்கம் - Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      font-size: 16px;
+      margin: 5px 0 0;
+    }
+
+    .container {
+      max-width: 900px;
+      background: white;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff416c;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #ff416c;
+      color: white;
+    }
+
+    tr:hover {
+      background: #ffeaea;
+    }
+
+    img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    button {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 22px; }
+      .container { padding: 15px; }
+      th, td { font-size: 13px; }
+      img { width: 60px; height: 45px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>நிர்வாகி பக்கம் 🧑‍💼 | Admin Dashboard</h1>
+    <p>மீன் சந்தை மேலாண்மை - Manage Nagai Fish Market</p>
+  </header>
+
+  <div class="container">
+    <h2>இன்றைய மீன் விவரங்கள்</h2>
+
+    <table id="adminTable">
+      <thead>
+        <tr>
+          <th>படம்</th>
+          <th>மீன் பெயர்</th>
+          <th>விலை</th>
+          <th>அளவு</th>
+          <th>விளக்கம்</th>
+          <th>நடவடிக்கை</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="https://i.ibb.co/ZG2wT3h/fish1.jpg" alt="Fish"></td>
+          <td>வஞ்சிரம் (Seer Fish)</td>
+          <td>₹850</td>
+          <td>20 Kg</td>
+          <td>புதிய வஞ்சிரம் மீன் - காலை பிடிக்கப்பட்டது.</td>
+          <td><button onclick="deleteRow(this)">நீக்கு</button></td>
+        </tr>
+        <tr>
+          <td><img src="https://i.ibb.co/sFzj9Lt/fish2.jpg" alt="Fish"></td>
+          <td>சங்கரா (Red Snapper)</td>
+          <td>₹600</td>
+          <td>35 Kg</td>
+          <td>உயர் தரம் கொண்ட சங்கரா மீன்.</td>
+          <td><button onclick="deleteRow(this)">நீக்கு</button></td>
+        </tr>
+        <tr>
+          <td><img src="https://i.ibb.co/mTmhM3R/fish3.jpg" alt="Fish"></td>
+          <td>நெய்மீன் (Pomfret)</td>
+          <td>₹700</td>
+          <td>15 Kg</td>
+          <td>குளிர்ச்சியான கடல் மீன், சிறந்த சுவை.</td>
+          <td><button onclick="deleteRow(this)">நீக்கு</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.remove();
+      alert("மீன் விவரம் நீக்கப்பட்டது!");
+    }
+  </script>
+
+</body>
+</html>

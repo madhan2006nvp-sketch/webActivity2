@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>இன்றைய மீன் பட்டியல்</title>
+<style>
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #f1f9ff);
+    margin: 0;
+    padding: 20px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 26px;
+    color: #007a8a;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .search-box {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .search-box:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 8px rgba(0,188,212,0.3);
+  }
+
+  .fish-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .fish-card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .fish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .fish-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .fish-card h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    color: #004d40;
+  }
+
+  .fish-card p {
+    font-size: 14px;
+    color: #4a4949;
+    line-height: 1.4;
+  }
+
+  .price {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    color: white;
+    background: #ff7b30;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .qty {
+    font-size: 14px;
+    margin-top: 3px;
+    color: #555;
+  }
+
+  .btn {
+    background: linear-gradient(to right, #ff9933, #ff6600);
+    border: none;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+
+  .btn:hover {
+    background: linear-gradient(to right, #ff6600, #ff9933);
+  }
+
+  @media (max-width: 768px) {
+    .fish-card img {
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 22px;
+    }
+    .fish-card p {
+      font-size: 13px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h2 class="title">இன்றைய மீன் பட்டியல் 🐟</h2>
+  <input type="text" id="search" class="search-box" placeholder="Search fish...">
+
+  <div class="fish-container" id="fishList">
+
+    <div class="fish-card" data-name="seer fish வஞ்சிரம்">
+      <img src="seerfish.jpg" alt="Seer Fish">
+      <h3>Seer Fish / வஞ்சிரம்</h3>
+      <p>வஞ்சிரம் மீன் புரதச்சத்து மற்றும் ஓமேகா-3 நிறைந்தது. இதன் இறைச்சி மென்மையானது மற்றும் வறுவல்/கறிக்கு சிறந்தது.</p>
+      <span class="price">₹250 / 1kg</span>
+      <div class="qty">Available: 25 kg</div>
+      <button class="btn" onclick="goToOrder('Seer Fish',250)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="pomfret வாவால்">
+      <img src="pomfret.jpg" alt="Pomfret Fish">
+      <h3>Pomfret / வவால்</h3>
+      <p>வவால் மீன் செரிமானத்துக்கு எளிது, இதய ஆரோக்கியத்திற்கு நல்லது. சுட்டது மற்றும் கறிக்கு சிறந்தது.</p>
+      <span class="price">₹200 / 1kg</span>
+      <div class="qty">Available: 15 kg</div>
+      <button class="btn" onclick="goToOrder('Pomfret',200)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="king fish செரா">
+      <img src="kingfish.jpg" alt="King Fish">
+      <h3>King Fish / செரா</h3>
+      <p>செரா மீன் வறுவல் மற்றும் வறுக்க மிகவும் பிரபலமானது. எலும்பு குறைவாக இருப்பதால் குழந்தைகளுக்கும் ஏற்றது.</p>
+      <span class="price">₹300 / 1kg</span>
+      <div class="qty">Available: 18 kg</div>
+      <button class="btn" onclick="goToOrder('King Fish',300)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="prawn இறால்">
+      <img src="prawn.jpg" alt="Prawn">
+      <h3>Prawn / இறால்</h3>
+      <p>இறால் உயர் தரமான புரதம் கொண்டது. கிரேவி, வறுவல் மற்றும் பிரியாணிக்கேவும் ஏற்றது.</p>
+      <span class="price">₹150 / 1kg</span>
+      <div class="qty">Available: 12 kg</div>
+      <button class="btn" onclick="goToOrder('Prawn',150)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="tuna சூரை">
+      <img src="tuna.jpg" alt="Tuna Fish">
+      <h3>Tuna / சூரை</h3>
+      <p>சூரை மீன் இரத்த சோகைக்கு நல்லது, ஓமேகா-3 நிறைந்தது. குழம்பும், சுட்டதற்கு ஏற்றது.</p>
+      <span class="price">₹500 / 1kg</span>
+      <div class="qty">Available: 30 kg</div>
+      <button class="btn" onclick="goToOrder('Tuna',500)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="crab நண்டு">
+      <img src="crab.jpg" alt="Crab">
+      <h3>Crab / நண்டு</h3>
+      <p>நண்டு சாறும், நண்டு குழம்பும் ஆரோக்கியமானதும் சுவையானதும். நோய் எதிர்ப்பு சக்தி அதிகரிக்கும்.</p>
+      <span class="price">₹250 / 1kg</span>
+      <div class="qty">Available: 8 kg</div>
+      <button class="btn" onclick="goToOrder('Crab',250)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="catla கெண்டை">
+      <img src="catla.jpg" alt="Catla Fish">
+      <h3>Catla / கெண்டை</h3>
+      <p>கட்லா மீன் இரத்த சோகைக்கு நல்லது, இரும்புச்சத்து நிறைந்தது. கண்களின் ஆரோக்கியம் மற்றும் மூளையின் செயல்பாட்டை மேம்படுத்த உதவும்.</p>
+      <span class="price">₹300 / 1kg</span>
+      <div class="qty">Available: 30 kg</div>
+      <button class="btn" onclick="goToOrder('Catla',300)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="sardines மத்தி">
+      <img src="sardines.jpg" alt="Sardines">
+      <h3>Sardines / மத்தி</h3>
+      <p>இது ஒமேகா-3 கொழுப்பு அமிலங்கள், கால்சியம், பாஸ்பரஸ் மற்றும் வைட்டமின் D போன்ற ஊட்டச்சத்துக்களின் சிறந்த ஆதாரமாகும்.</p>
+      <span class="price">₹150 / 1kg</span>
+      <div class="qty">Available: 20 kg</div>
+      <button class="btn" onclick="goToOrder('Sardines',150)">Add to Cart</button>
+    </div>
+
+    <div class="fish-card" data-name="stingray திருக்கை">
+      <img src="stingray.jpg" alt="Stingray Fish">
+      <h3>Stingray / திருக்கை</h3>
+      <p>இதற்கு கூர்மையான முட்கள் நிறைந்த வால் உண்டு. திருக்கை மீன் ஆரோக்கியத்திற்கு நன்மை பயக்கும் என்றும் கூறப்படுகிறது.</p>
+      <span class="price">₹250 / 1kg</span>
+      <div class="qty">Available: 10 kg</div>
+      <button class="btn" onclick="goToOrder('Stingray',250)">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("search").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      document.querySelectorAll(".fish-card").forEach(card => {
+        let name = card.getAttribute("data-name").toLowerCase();
+        card.style.display = name.includes(filter) ? "" : "none";
+      });
+    });
+
+    function goToOrder(name, price) {
+      window.location.href = `order.html?fish=${name}&price=${price}`;
+    }
+  </script>
+
+</body>
+</html>

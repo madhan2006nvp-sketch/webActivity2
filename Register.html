@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Page</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f2f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        width: 320px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #2d3436;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 95%;
+        padding: 10px;
+        background-color: #00b894;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #019874;
+    }
+
+    p {
+        color: red;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #0984e3;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="text" id="email" placeholder="Email">
+    <input type="password" id="pass" placeholder="Password">
+    <input type="password" id="confirm" placeholder="Confirm Password">
+    <button onclick="register()">Register</button>
+    <p id="msg"></p>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+<script>
+function register() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var pass = document.getElementById("pass").value;
+    var confirm = document.getElementById("confirm").value;
+    var msg = document.getElementById("msg");
+
+    if (name === "" || email === "" || pass === "" || confirm === "") {
+        msg.textContent = "Please fill all fields!";
+    } else if (pass !== confirm) {
+        msg.textContent = "Passwords do not match!";
+    } else {
+        msg.style.color = "green";
+        msg.textContent = "Registration successful!";
+        setTimeout(() => {
+            window.location.href = "login.html"; 
+        }, 1000);
+    }
+}
+</script>
+
+</body>
+</html>

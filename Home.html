@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nagai Fish Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f8fb;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .headline-container {
+      background-color: #e60000;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .headline {
+      display: inline-block;
+      font-size: 35px;
+      color: #fff;
+      padding: 15px;
+      animation: moveText 15s linear infinite;
+    }
+
+    @keyframes moveText {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    header {
+      background: linear-gradient(135deg, #4b4b4b, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      transition: background 1s ease;
+    }
+
+    header:hover {
+      background: linear-gradient(135deg, #6a11cb, #2575fc, #4b4b4b);
+    }
+
+    header h1 {
+      font-size: 60px;
+      margin: 0;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+    }
+
+    header h2 {
+      font-size: 36px;
+      margin: 10px 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #e0f7fa;
+    }
+
+    .portal-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .portal-section h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .portal-section p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .portals {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .portal-card {
+      background: white;
+      width: 280px;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .portal-icon {
+      font-size: 50px;
+      color: #0099cc;
+      margin-bottom: 15px;
+    }
+
+    .portal-card h3 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .portal-card h4 {
+      font-size: 18px;
+      color: #0077aa;
+      margin-bottom: 10px;
+    }
+
+    .portal-card p {
+      font-size: 14px;
+      color: #666;
+      min-height: 40px;
+    }
+
+    .portal-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      color: white;
+      padding: 10px 25px;
+      margin-top: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .portal-btn:hover {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0072ff;
+      color: white;
+      font-size: 16px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="headline-container">
+    <div class="headline">
+      🐟 நாகை மீன் சந்தை — Nagai Fish Market 🐠 Fresh Seafood Everyday 🍤🐚
+    </div>
+  </div>
+
+  <header>
+    <h1>நாகை மீன் சந்தை</h1>
+    <h2>Nagai Fish Market</h2>
+    <p>🐟 Fresh Seafood Everyday 🦀🐚</p>
+  </header>
+
+  <section class="portal-section">
+    <h2>Choose Your Portal</h2>
+    <p>Select your role to access your dedicated dashboard</p>
+
+    <div class="portals">
+      <div class="portal-card">
+        <div class="portal-icon">🛡️</div>
+        <h3>Admin Portal</h3>
+        <h4>நிர்வாகி</h4>
+        <p>Manage users, monitor activities, and oversee the marketplace</p>
+        <a href="Admin.html" class="portal-btn">Login / Sign Up</a>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-icon">🛍️</div>
+        <h3>Customer Portal</h3>
+        <h4>வாங்குபவர்</h4>
+        <p>Browse fresh catches and explore today’s market prices</p>
+        <a href="Customer.html" class="portal-btn">Login / Sign Up</a>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-icon">🐠</div>
+        <h3>Fisherman Portal</h3>
+        <h4>மீனவர்</h4>
+        <p>Submit your daily catch and manage your listings</p>
+        <a href="Fishman.html" class="portal-btn">Login / Sign Up</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 நாகை மீன் சந்தை | Nagai Fish Market — All Rights Reserved
+  </footer>
+
+</body>
+</html>
